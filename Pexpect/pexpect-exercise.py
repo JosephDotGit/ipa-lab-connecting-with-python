@@ -11,6 +11,7 @@ try:
 
     child = pexpect.spawn('telnet %s'%R1_ip)
     child.expect('Username:')
+    print(type(R1_username))
     child.sendline(R1_username)
     child.expect('Password:')
     child.sendline(R1_password)
