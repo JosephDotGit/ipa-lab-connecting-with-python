@@ -1,0 +1,14 @@
+acl:
+  - number: 1
+    rules:
+      - { action: permit, src: 192.168.1.0, src_mask: 0.0.0.255}
+      - { action: permit, src: 192.168.2.0, src_mask: 0.0.0.255}
+      - { action: permit, src: 192.168.3.0, src_mask: 0.0.0.255}
+
+nat:
+  inside: 
+    - GigabitEthernet0/1
+    - GigabitEthernet0/2
+  outside: GigabitEthernet0/3
+  acl_number: 1
+  vrf: control-data

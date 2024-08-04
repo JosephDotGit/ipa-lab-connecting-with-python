@@ -1,0 +1,14 @@
+{% for acl in acl %}
+{% for rule in acl.rules %}
+ access-list {{ acl.number }} {{ rule.action }} {{ rule.src }} {{ rule.src_mask }}
+{% endfor %}
+{% endfor %}
+ip nat inside source list 1 interface {{ nat.outside }} vrf {{ nat.vrf }} overload
+
+{% for inside in nat.inside %}
+interface {{ inside }}
+ ip nat inside
+{% endfor %}
+
+interface {{ nat.outside }}
+ ip nat outside
