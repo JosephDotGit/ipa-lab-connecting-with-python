@@ -2,5 +2,6 @@
 172.31.113.10
 172.31.113.11
 172.31.113.12
+
 [centos_servers]
 172.31.113.20 ansible_user=cloud-user

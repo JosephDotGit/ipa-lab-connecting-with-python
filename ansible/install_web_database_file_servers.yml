@@ -6,11 +6,13 @@
         # upgrade: dist
         update_cache: true
       when: ansible_distribution == "Ubuntu"
+
     - name: update repository index and upgrade all installed dependencies (centos)
       dnf:
       # update_only: true
-      update_cache: true
+        update_cache: true
       when: ansible_distribution == "CentOS"
+
 - hosts: web_servers
   become: true
   tasks:
@@ -21,6 +23,7 @@
           - libapache2-mod-php
         state: latest
       when: ansible_distribution == "Ubuntu"
+
     - name: Update repository index, install httpd and php (centOS)
       dnf:
         name:
